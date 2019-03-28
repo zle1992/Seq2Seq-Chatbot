@@ -334,8 +334,8 @@ class DynamicSeq2seq():
                         gradients, self.max_gradient_norm)
 
         # Optimization
-        #optimizer = tf.train.GradientDescentOptimizer(self.learning_rate)
-        optimizer = tf.train.AdamOptimizer(self.learning_rate)
+        optimizer = tf.train.GradientDescentOptimizer(self.learning_rate)
+        #optimizer = tf.train.AdamOptimizer(self.learning_rate)
         update_step = optimizer.apply_gradients(zip(clipped_gradients, params))
         self.train_op = update_step
         self.saver = tf.train.Saver(tf.global_variables())

@@ -44,11 +44,11 @@ class Seq2seq():
         
 
         self.data_map = "data/map.pkl"
-        self.batch_size = 256
-        self.max_epoch = 1000
-        self.lr = 0.001
-        self.lstm_dims = 64
-        self.beam_width = 3
+        self.batch_size = 300
+        self.max_epoch = 100
+        self.lr = 0.1
+        self.lstm_dims = 128
+        self.beam_width = 2
         self.show_batch = 10
         self.model_path = 'model/'
         self.user_char = True
@@ -157,8 +157,8 @@ class Seq2seq():
         feed = self.make_inference_fd(vec)
         logits = self.sess.run([self.model.translations], feed_dict=feed)
         #print(logits)
-        for i in range(self.beam_width):
-            output = logits[0][0][:,i]
+        for j in range(self.beam_width):
+            output = logits[0][0][:,j]
 
             output_str = "".join([self.vec_to_char.get(i, "_UN_") for i in output])
 
