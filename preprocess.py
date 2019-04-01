@@ -67,7 +67,7 @@ class Preprocess():
                 segments = jieba.lcut(sent)
 
             for seg in segments:
-                if seg not in vocab:
+                if seg not in words_count:
                     words_count[seg] =  1
                 else:
                     words_count[seg] += 1
